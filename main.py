@@ -26,7 +26,8 @@ def crew_ai_funciton(company_name, employees, industry, technologies, keywords):
 
         result_sales_analysis = sales_crew.kickoff()
 
-        print(result_sales_analysis)
+        abhinav = result_sales_analysis['content']
+        print(f'Variable_OUT: {abhinav}')
 
         
     except Exception as e:
@@ -35,4 +36,4 @@ def crew_ai_funciton(company_name, employees, industry, technologies, keywords):
 if __name__ == "__main__":
     row = llm_data()
     # print(row['employee_size'])
-    crew_ai_funciton(row['company'], row['employee_size'], row['industry'], row['technologies'], row['keywords'])
+    llm_output = crew_ai_funciton(row['company'], row['employee_size'], row['industry'], row['technologies'], row['keywords'])

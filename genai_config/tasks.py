@@ -1,5 +1,11 @@
 from textwrap import dedent
 from crewai import Task
+import json
+from pydantic import BaseModel
+
+# Define the Pydantic model for output
+class SDR_OUT(BaseModel):
+    content: str
 
 class sales_tasks():
     # Sales Task
@@ -31,6 +37,7 @@ class sales_tasks():
             ),
             verbose=True,
             agent=agent,
+            output_json=SDR_OUT
         )
     
     # Output config pending.
