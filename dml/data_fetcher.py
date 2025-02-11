@@ -16,7 +16,7 @@ def llm_data():
         port = os.getenv('DB_PORT')
     )
         with connection.cursor(cursor_factory=RealDictCursor) as cur:
-            cur.execute("SELECT * FROM llm_data_upstream LIMIT 5")
+            cur.execute("SELECT * FROM llm_data_upstream")
             row = cur.fetchall()
             return row
     except Exception as error:
