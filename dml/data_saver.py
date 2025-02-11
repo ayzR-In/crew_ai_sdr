@@ -19,7 +19,7 @@ def llm_outptu_updater(first_name, last_name, title, email, company, llm_output_
             cur.execute('''
                 INSERT INTO llm_output(
                         first_name, last_name, title, email, company, llm_output_1
-                    ) VALUES (%s, %s, %s, %s, %s, %s)
+                    ) VALUES (%s, %s, %s, %s, %s, %s) ON CONFLICT(email) DO NOTHING
                 ''' ,(first_name, last_name, title, email, company, llm_output_1))
             connection.commit()
             
