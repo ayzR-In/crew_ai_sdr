@@ -3,6 +3,7 @@ from crewai import Crew
 from genai_config.tasks import sales_tasks
 from genai_config.agents import sales_agents
 from dml.data_fetcher import llm_data
+from dml.data_saver import llm_outptu_updater
 
 def crew_ai_funciton(company_name, employees, industry, technologies, keywords):
 
@@ -27,13 +28,14 @@ def crew_ai_funciton(company_name, employees, industry, technologies, keywords):
         result_sales_analysis = sales_crew.kickoff()
 
         abhinav = result_sales_analysis['content']
-        print(f'Variable_OUT: {abhinav}')
+        return abhinav
 
         
     except Exception as e:
         return None
 
 if __name__ == "__main__":
-    row = llm_data()
-    # print(row['employee_size'])
-    llm_output = crew_ai_funciton(row['company'], row['employee_size'], row['industry'], row['technologies'], row['keywords'])
+    rows = llm_data()
+    for row in rows:
+        llm_output = crew_ai_funciton(row['company'], row['employee_size'], row['industry'], row['technologies'], row['keywords'])
+        llm_outptu_updater(row['first_name'], row['last_name'], row['title'], row['email'],row['company'],llm_output)

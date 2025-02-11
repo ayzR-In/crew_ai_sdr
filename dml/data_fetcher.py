@@ -17,7 +17,7 @@ def llm_data():
     )
         with connection.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute("SELECT * FROM llm_data_upstream LIMIT 5")
-            row = cur.fetchone()
+            row = cur.fetchall()
             return row
     except Exception as error:
         print(error)
