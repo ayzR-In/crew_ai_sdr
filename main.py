@@ -3,7 +3,7 @@ from crewai import Crew
 from genai_config.tasks import sales_tasks
 from genai_config.agents import sales_agents
 from dml.data_fetcher import llm_data
-from dml.data_saver import llm_outptu_updater
+from dml.data_saver import llm_output_updater
 
 def crew_ai_funciton(company_name, employees, industry, technologies, keywords):
 
@@ -38,4 +38,4 @@ if __name__ == "__main__":
     rows = llm_data()
     for row in rows:
         llm_output = crew_ai_funciton(row['company'], row['employee_size'], row['industry'], row['technologies'], row['keywords'])
-        llm_outptu_updater(row['first_name'], row['last_name'], row['title'], row['email'],row['company'],llm_output)
+        llm_output_updater(row['first_name'], row['last_name'], row['title'], row['email'],row['company'],llm_output)

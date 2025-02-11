@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def llm_outptu_updater(first_name, last_name, title, email, company, llm_output_1):
+def llm_output_updater(first_name, last_name, title, email, company, llm_output_1):
     connection = None
     try:
         connection = psycopg2.connect(
