@@ -17,9 +17,10 @@ def llm_data():
     )
         with connection.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute("""
-            SELECT * FROM llm_data_upstream 
+            SELECT * FROM llm_data_upstream dupstream
             WHERE NOT EXISTS (
-                SELECT * FROM llm_output
+                SELECT null FROM llm_output doutput
+                WHERE dupstream.email = doutput.email
             )
             """)
             row = cur.fetchall()
